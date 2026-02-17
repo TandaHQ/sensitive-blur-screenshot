@@ -6,6 +6,8 @@ Chrome extension that takes screenshots with sensitive information automatically
   <img width="340" height="272" alt="image" src="https://github.com/user-attachments/assets/4a82c24f-d65d-4bee-8bca-a6d5a749df1a" />
 </p>
 
+<img width="2147" height="1294" alt="screenshot-1771311836580" src="https://github.com/user-attachments/assets/7c620c1b-df1c-436b-8b4f-7452a5052b3e" />
+
 ## Install
 
 1. Clone this repo
