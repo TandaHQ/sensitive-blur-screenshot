@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <p>Right-click each canvas and "Save Image As" to save the icons.</p>
+  <div>
+    <p>16x16</p><canvas id="c16" width="16" height="16"></canvas>
+  </div>
+  <div>
+    <p>48x48</p><canvas id="c48" width="48" height="48"></canvas>
+  </div>
+  <div>
+    <p>128x128</p><canvas id="c128" width="128" height="128"></canvas>
+  </div>
+  <script>
+    function draw(id, size) {
+      const c = document.getElementById(id);
+      const ctx = c.getContext("2d");
+      const r = size * 0.4;
+
+      ctx.fillStyle = "#2563eb";
+      ctx.beginPath();
+      ctx.roundRect(0, 0, size, size, size * 0.2);
+      ctx.fill();
+
+      ctx.fillStyle = "white";
+      ctx.beginPath();
+      ctx.arc(size / 2, size / 2, r, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = "#2563eb";
+      ctx.beginPath();
+      ctx.arc(size / 2, size / 2, r * 0.45, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.strokeStyle = "white";
+      ctx.lineWidth = size * 0.06;
+      ctx.lineCap = "round";
+      ctx.beginPath();
+      ctx.moveTo(size * 0.2, size * 0.8);
+      ctx.lineTo(size * 0.8, size * 0.2);
+      ctx.stroke();
+    }
+
+    draw("c16", 16);
+    draw("c48", 48);
+    draw("c128", 128);
+  </script>
+</body>
+</html>
