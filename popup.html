@@ -3,7 +3,7 @@
 <head>
   <style>
     body {
-      width: 280px;
+      width: 300px;
       padding: 16px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       margin: 0;
@@ -54,9 +54,7 @@
       cursor: pointer;
     }
 
-    input[type="range"] {
-      flex: 1;
-    }
+    input[type="range"] { flex: 1; }
 
     .range-row {
       display: flex;
@@ -71,20 +69,71 @@
       min-width: 30px;
       text-align: right;
     }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin: 12px 0 6px;
+    }
+
+    .detectors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 12px;
+    }
+
+    .detector {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid #d1d5db;
+      background: white;
+      color: #374151;
+      cursor: pointer;
+      transition: all 0.1s;
+      width: auto;
+      font-weight: 500;
+    }
+
+    .detector.active {
+      background: #2563eb;
+      color: white;
+      border-color: #2563eb;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #e5e7eb;
+      margin: 12px 0;
+    }
   </style>
 </head>
 <body>
   <h1>Sensitive Blur Screenshot</h1>
 
   <div class="settings">
-    <label>
-      Blur strength
-    </label>
+    <label>Blur strength</label>
     <div class="range-row">
       <input type="range" id="blur-strength" min="2" max="20" value="8">
       <span class="range-value" id="blur-value">8px</span>
     </div>
   </div>
+
+  <div class="section-label">Auto-detect</div>
+  <div class="detectors">
+    <button class="detector active" data-detector="dollars">$ Amounts</button>
+    <button class="detector active" data-detector="emails">Emails</button>
+    <button class="detector active" data-detector="phones">Phones</button>
+    <button class="detector active" data-detector="tfn">TFN</button>
+    <button class="detector active" data-detector="ird">IRD</button>
+    <button class="detector active" data-detector="tableNames">Names (tables)</button>
+  </div>
+
+  <hr class="divider">
 
   <button id="capture">Take Screenshot</button>
   <div id="status"></div>

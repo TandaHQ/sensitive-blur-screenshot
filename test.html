@@ -2,46 +2,87 @@
 <html>
 <head>
   <style>
-    body { font-family: -apple-system, sans-serif; max-width: 600px; margin: 40px auto; }
+    body { font-family: -apple-system, sans-serif; max-width: 700px; margin: 40px auto; }
     table { width: 100%; border-collapse: collapse; margin-top: 20px; }
     th, td { padding: 10px; text-align: left; border-bottom: 1px solid #e5e7eb; }
     th { background: #f9fafb; font-size: 13px; color: #6b7280; }
-    .sensitive { background: #fef3c7; padding: 2px 4px; border-radius: 3px; }
+    h2 { margin-top: 40px; font-size: 16px; color: #374151; }
+    .card { border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; margin: 8px 0; }
+    .label { font-size: 12px; color: #6b7280; margin-bottom: 2px; }
+    .value { font-size: 16px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   </style>
 </head>
 <body>
-  <h1>Employee List</h1>
-  <p>Elements with class <code>.sensitive</code> will be blurred in screenshots.</p>
+  <h1>Auto-Detect Test Page</h1>
+  <p>Tests for all detector types. No <code>.sensitive</code> class used — everything should be caught by auto-detect.</p>
 
+  <h2>Table with Names & Dollar Amounts</h2>
   <table>
     <thead>
       <tr>
         <th>Name</th>
         <th>Email</th>
-        <th>Salary</th>
+        <th>Earnings</th>
+        <th>Tax</th>
+        <th>Net Pay</th>
         <th>Department</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>Jane Smith</td>
-        <td class="sensitive">jane.smith@example.com</td>
-        <td class="sensitive">$95,000</td>
+        <td>jane.smith@example.com</td>
+        <td>$4,250.00</td>
+        <td>$892.50</td>
+        <td>$3,357.50</td>
         <td>Engineering</td>
       </tr>
       <tr>
         <td>Bob Johnson</td>
-        <td class="sensitive">bob.j@example.com</td>
-        <td class="sensitive">$82,000</td>
+        <td>bob.j@company.co.nz</td>
+        <td>$3,800.00</td>
+        <td>$741.00</td>
+        <td>$3,059.00</td>
         <td>Marketing</td>
       </tr>
       <tr>
         <td>Alice Chen</td>
-        <td class="sensitive">alice.c@example.com</td>
-        <td class="sensitive">$105,000</td>
+        <td>alice.c@example.com</td>
+        <td>$5,100.00</td>
+        <td>$1,122.00</td>
+        <td>$3,978.00</td>
         <td>Engineering</td>
       </tr>
     </tbody>
   </table>
+
+  <h2>Non-Table Content</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="label">Phone</div>
+      <div class="value">+64 21 234 5678</div>
+    </div>
+    <div class="card">
+      <div class="label">Email</div>
+      <div class="value">john.doe@company.co.nz</div>
+    </div>
+    <div class="card">
+      <div class="label">IRD Number</div>
+      <div class="value">12-345-678</div>
+    </div>
+    <div class="card">
+      <div class="label">TFN</div>
+      <div class="value">123 456 789</div>
+    </div>
+    <div class="card">
+      <div class="label">Salary</div>
+      <div class="value">$95,000.00</div>
+    </div>
+    <div class="card">
+      <div class="label">Address</div>
+      <div class="value">42 Queen Street, Auckland 1010</div>
+    </div>
+  </div>
 </body>
 </html>
