@@ -46,6 +46,13 @@ Add the CSS class `sensitive` to any HTML element to always blur it in screensho
 <td class="sensitive">Jane Smith</td>
 ```
 
+### Output mode
+
+Choose how the screenshot is delivered:
+
+- **Copy to Clipboard** (default) — copies the image directly to your clipboard, ready to paste
+- **Download** — saves it as a PNG file
+
 ### Blur strength
 
 Use the slider to control how strong the blur effect is (2px to 20px).
@@ -60,7 +67,7 @@ The sequence:
 2. Applies a CSS `filter: blur()` to matched elements
 3. Captures the visible tab using Chrome's `captureVisibleTab` API
 4. Removes all blur filters, restoring original styles
-5. Downloads the screenshot as a PNG (for area select, it crops using a canvas before downloading)
+5. Copies the screenshot to clipboard or downloads it as a PNG, depending on the selected output mode (for area select, it crops using a canvas first)
 
 The page is only blurred for a fraction of a second. If you cancel (Esc during area select, or close the popup), no changes persist.
 

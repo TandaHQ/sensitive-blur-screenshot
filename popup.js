@@ -8,6 +8,33 @@ blurRange.addEventListener("input", () => {
   blurValue.textContent = `${blurRange.value}px`;
 });
 
+const outputButtons = document.querySelectorAll(".output-toggle button");
+outputButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    outputButtons.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+  });
+});
+
+function getOutputMode() {
+  return document.querySelector(".output-toggle button.active").dataset.mode;
+}
+
+async function outputScreenshot(dataUrl, mode) {
+  if (mode === "clipboard") {
+    const res = await fetch(dataUrl);
+    const blob = await res.blob();
+    await navigator.clipboard.write([
+      new ClipboardItem({ "image/png": blob }),
+    ]);
+  } else {
+    const link = document.createElement("a");
+    link.href = dataUrl;
+    link.download = `screenshot-${Date.now()}.png`;
+    link.click();
+  }
+}
+
 document.querySelectorAll(".detector").forEach((btn) => {
   btn.addEventListener("click", () => btn.classList.toggle("active"));
 });
@@ -30,6 +57,7 @@ fullBtn.addEventListener("click", async () => {
 
   const blurPx = getBlurPx();
   const detectors = getActiveDetectors();
+  const outputMode = getOutputMode();
 
   try {
     const [tab] = await chrome.tabs.query({
@@ -60,12 +88,10 @@ fullBtn.addEventListener("click", async () => {
       func: () => removeBlur(),
     });
 
-    const link = document.createElement("a");
-    link.href = dataUrl;
-    link.download = `screenshot-${Date.now()}.png`;
-    link.click();
+    await outputScreenshot(dataUrl, outputMode);
 
-    statusEl.textContent = "Done!";
+    statusEl.textContent =
+      outputMode === "clipboard" ? "Copied to clipboard!" : "Downloaded!";
   } catch (err) {
     statusEl.textContent = `Error: ${err.message}`;
   } finally {
@@ -79,7 +105,8 @@ areaBtn.addEventListener("click", async () => {
   const blurPx = getBlurPx();
   const detectors = getActiveDetectors();
 
-  await chrome.storage.local.set({ blurPx, detectors });
+  const outputMode = getOutputMode();
+  await chrome.storage.local.set({ blurPx, detectors, outputMode });
 
   const [tab] = await chrome.tabs.query({
     active: true,

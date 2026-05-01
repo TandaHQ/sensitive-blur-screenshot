@@ -119,6 +119,35 @@
       border-top: 1px solid #e5e7eb;
       margin: 12px 0;
     }
+
+    .output-toggle {
+      display: flex;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .output-toggle button {
+      flex: 1;
+      padding: 6px 8px;
+      border: none;
+      background: white;
+      color: #374151;
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.1s;
+    }
+
+    .output-toggle button.active {
+      background: #2563eb;
+      color: white;
+    }
+
+    .output-toggle button:not(:last-child) {
+      border-right: 1px solid #d1d5db;
+    }
   </style>
 </head>
 <body>
@@ -143,6 +172,12 @@
   </div>
 
   <hr class="divider">
+
+  <div class="section-label">Output</div>
+  <div class="output-toggle">
+    <button class="active" data-mode="clipboard">Copy to Clipboard</button>
+    <button data-mode="download">Download</button>
+  </div>
 
   <div class="buttons">
     <button class="btn btn-primary" id="capture-full">Full Page</button>

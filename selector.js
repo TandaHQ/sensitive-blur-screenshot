@@ -1,7 +1,8 @@
 (async () => {
-  const config = await chrome.storage.local.get(["blurPx", "detectors"]);
+  const config = await chrome.storage.local.get(["blurPx", "detectors", "outputMode"]);
   const blurPx = config.blurPx || 8;
   const detectors = config.detectors || [];
+  const outputMode = config.outputMode || "clipboard";
 
   const overlay = document.createElement("div");
   Object.assign(overlay.style, {
@@ -127,9 +128,17 @@
     );
 
     const croppedUrl = canvas.toDataURL("image/png");
-    const link = document.createElement("a");
-    link.href = croppedUrl;
-    link.download = `screenshot-${Date.now()}.png`;
-    link.click();
+    if (outputMode === "clipboard") {
+      const res = await fetch(croppedUrl);
+      const blob = await res.blob();
+      await navigator.clipboard.write([
+        new ClipboardItem({ "image/png": blob }),
+      ]);
+    } else {
+      const link = document.createElement("a");
+      link.href = croppedUrl;
+      link.download = `screenshot-${Date.now()}.png`;
+      link.click();
+    }
   });
 })();
