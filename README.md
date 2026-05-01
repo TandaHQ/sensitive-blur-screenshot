@@ -3,7 +3,7 @@
 Chrome extension that takes screenshots with sensitive information automatically blurred out.
 
 <p align="center">
-  <img width="429" height="366" alt="Screenshot 2026-05-01 at 2 34 27 PM" src="https://github.com/user-attachments/assets/d22ea554-9dac-4ec2-abc6-08454f181a52" />
+  <img width="339" height="336" alt="Screenshot 2026-05-01 at 2 45 42 PM" src="https://github.com/user-attachments/assets/72a17cd3-d00c-41d8-a957-2a5dff103152" />
 </p>
 
 <img width="2147" height="1294" alt="screenshot-1771311836580" src="https://github.com/user-attachments/assets/7c620c1b-df1c-436b-8b4f-7452a5052b3e" />
