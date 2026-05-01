@@ -3,7 +3,7 @@
   "name": "Sensitive Blur Screenshot",
   "version": "1.1",
   "description": "Take screenshots with .sensitive elements automatically blurred",
-  "permissions": ["activeTab", "scripting", "storage"],
+  "permissions": ["activeTab", "scripting", "storage", "clipboardWrite"],
   "background": {
     "service_worker": "background.js"
   },
